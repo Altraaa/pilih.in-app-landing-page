@@ -1,26 +1,167 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* @plugin "tailwindcss-animate"; */
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Chocolate Palette */
+  --color-chocolate-cream: #F5F0E8;
+  --color-chocolate-latte: #CDBBA7;
+  --color-chocolate-milk: #966F53;
+  --color-chocolate-rich: #6F4E37;
+  --color-chocolate-espresso: #3C2415;
+  --color-chocolate-dark: #2A1810;
+
+  /* Gold Palette */
+  --color-gold-light: #D4AF37;
+  --color-gold-DEFAULT: #C5A028;
+  --color-gold-dark: #A68B1B;
+
+  /* Shadcn Mappings */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0 }
+    to { height: var(--radix-accordion-content-height) }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height) }
+    to { height: 0 }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base Variables */
+:root {
+  /* Fonts will be injected by layout.tsx */
+  /* --font-inter and --font-outfit */
+
+  /* Theme: Luxury Chocolate */
+  --background: var(--color-chocolate-cream);
+  --foreground: var(--color-chocolate-espresso);
+
+  /* Primary: Rich Chocolate */
+  --primary: var(--color-chocolate-rich);
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary: Latte */
+  --secondary: var(--color-chocolate-latte);
+  --secondary-foreground: var(--color-chocolate-dark);
+
+  /* Muted: Cream darker */
+  --muted: #EDE6DB;
+  --muted-foreground: var(--color-chocolate-milk);
+
+  /* Accent: Gold */
+  --accent: var(--color-gold-DEFAULT);
+  --accent-foreground: #FFFFFF;
+
+  /* Destructive */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  /* Borders / Input */
+  --border: var(--color-chocolate-milk);
+  --input: var(--color-chocolate-latte);
+  --ring: var(--color-gold-DEFAULT);
+
+  /* Card */
+  --card: #FFFFFF;
+  --card-foreground: var(--color-chocolate-espresso);
+
+  /* Popover */
+  --popover: #FFFFFF;
+  --popover-foreground: var(--color-chocolate-espresso);
+
+  /* Radius */
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark Mode Mapping - Chocolate Dark */
+  --background: var(--color-chocolate-dark);
+  --foreground: var(--color-chocolate-cream);
+
+  --primary: var(--color-chocolate-rich);
+  --primary-foreground: #FFFFFF;
+
+  --secondary: var(--color-chocolate-espresso);
+  --secondary-foreground: var(--color-chocolate-cream);
+
+  --muted: var(--color-chocolate-espresso);
+  --muted-foreground: var(--color-chocolate-latte);
+
+  --accent: var(--color-gold-dark);
+  --accent-foreground: #FFFFFF;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: var(--color-chocolate-espresso);
+  --input: var(--color-chocolate-espresso);
+  --ring: var(--color-gold-dark);
+
+  --card: var(--color-chocolate-espresso);
+  --card-foreground: var(--color-chocolate-cream);
+
+  --popover: var(--color-chocolate-espresso);
+  --popover-foreground: var(--color-chocolate-cream);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(42, 24, 16, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-chocolate-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-chocolate-latte);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-chocolate-milk);
 }
