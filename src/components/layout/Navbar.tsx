@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -44,11 +45,16 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground font-bold text-xl group-hover:shadow-[0_0_15px_rgba(111,78,55,0.5)] transition-shadow">
-            P
-          </div>
-          <span className="font-heading font-bold text-xl tracking-tight text-foreground">
-            Pilih<span className="text-primary">.in</span>
+          <Image
+            src="/Pilih.in-Website-Logo.png"
+            alt="Pilih.in Logo"
+            width={56}
+            height={56}
+            className="object-contain"
+            priority
+          />
+          <span className="font-heading font-bold text-xl tracking-tight bg-gradient-to-r from-primary via-amber-600 to-primary bg-clip-text text-transparent">
+            Pilih.in
           </span>
         </Link>
 
