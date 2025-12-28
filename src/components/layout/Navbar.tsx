@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -10,17 +11,27 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader, SheetDescription } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
-const navLinks = [
+const homeNavLinks = [
   { name: "Home", href: "#" },
   { name: "About", href: "#about" },
-  { name: "Events", href: "#events" },
+  { name: "Events", href: "/events" },
   { name: "How it Works", href: "#how-it-works" },
   { name: "Portfolio", href: "#portfolio" },
 ]
 
+const eventsNavLinks = [
+  { name: "Home", href: "/" },
+  { name: "Events", href: "/events" },
+]
+
 export function Navbar() {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
+
+  // Determine which nav links to show based on current page
+  const isEventsPage = pathname?.startsWith("/events")
+  const navLinks = isEventsPage ? eventsNavLinks : homeNavLinks
 
   React.useEffect(() => {
     const handleScroll = () => {
