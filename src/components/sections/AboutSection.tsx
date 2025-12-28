@@ -4,10 +4,8 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 
 const timeline = [
-  { year: "2020", title: "Pendirian", desc: "Dimulai dari garasi kecil dengan visi mendigitalkan demokrasi." },
-  { year: "2021", title: "100 Event Pertama", desc: "Dipercaya oleh berbagai organisasi mahasiswa dan komunitas." },
-  { year: "2022", title: "Ekspansi Nasional", desc: "Membuka layanan untuk korporat dan ajang penghargaan nasional." },
-  { year: "2023", title: "50K Suara", desc: "Mencapai milestone 50.000 suara terverifikasi sistem." },
+  { year: "Sep 2025", title: "Pendirian", desc: "Pilih.in resmi berdiri dengan visi mendigitalkan demokrasi Indonesia." },
+  { year: "Des 2025", title: "Event Pertama", desc: "Sukses menyelenggarakan event perdana dan memperoleh 50.000+ suara." },
 ]
 
 export function AboutSection() {
@@ -33,7 +31,7 @@ export function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
                 <div className="text-white">
-                  <div className="font-heading font-bold text-2xl">Since 2020</div>
+                  <div className="font-heading font-bold text-2xl">Since 2025</div>
                   <p className="opacity-90">Building Trust through Technology</p>
                 </div> 
               </div>
